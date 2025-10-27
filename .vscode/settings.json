@@ -1,0 +1,22 @@
+{
+    "files.associations": {
+        "*.page": "html",
+        "*.component": "html"
+    },
+    "[visualforce]": {
+        "editor.defaultFormatter": "salesforce.salesforcedx-vscode-visualforce",
+        "editor.formatOnSave": true
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features",
+        "editor.formatOnSave": true
+    },
+    // На всякий случай отключим влияние Prettier/Beautify на VF/HTML
+    "prettier.disableLanguages": [
+        "visualforce"
+    ],
+    "beautify.ignore": [
+        "**/*.page",
+        "**/*.component"
+    ]
+}
