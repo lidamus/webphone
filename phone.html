@@ -1,0 +1,27 @@
+<head>
+      <!--include the webphone_api.js to your webpage-->
+      <script src="webphone_api.js"></script>
+</head>
+<body>
+      <script>
+      // IMPORTANT: Wait until the webphone is loaded, before calling any API functions
+      webphone_api.onAppStateChange(function (state) {
+      if (state === 'loaded') {
+
+            //set parameters (alternatively these can be also preset in your html)
+            webphone_api.setparameter('serveraddress', 'sipgate.de'); // Replace the word in uppercase with your SIP server IP or domain name (add also the :port number if not using the standard UDP 5060)
+            webphone_api.setparameter('transport', 'wss');
+            //see the "Parameters" section in the documentation for more options
+
+            //start the webphone (optional but recommended)
+            webphone_api.start();
+            //make a call (usually initiated by user action, such as click on a click to call button)
+            webphone_api.call(number);
+            //hangup
+            webphone_api.hangup();
+            //send instant message
+            webphone_api.sendchat(number, message);
+      }
+      });
+      </script>
+</body>

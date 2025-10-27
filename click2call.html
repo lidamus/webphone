@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<!-- 
+Click to call button implementation.
+You can use it as-is on your website or modify it after your needs.
+Replace the parameters below in upper-case with your settings and/or use any other parameters!
+
+For more customization, check the js/click2call/click2call.js and the css/click2call/click2call.css files.
+See the "Click to call" section in the documentation for more details.
+
+You can also start click2call (or any other html files) from a link/URL. Example:
+http://www.yourwebsite.com/webphonedir/click2call.html?wp_serveraddress=YOURSIPDOMAIN&wp_username=USERNAME&wp_password=PASSWORD&wp_md5=MD5AUTH&wp_callto=CALLEDNUMBER
+-->
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!--<meta http-equiv="Cache-Control" content="max-age=36000" />-->
+    <title>Click to call</title>
+    
+    <link rel="stylesheet" href="css/click2call/click2call.css" />
+    <script src="webphone_api.js?jscodeversion=523"></script>
+    <script src="js/click2call/click2call.js?jscodeversion=523"></script>
+    <script>
+        /**Set Configuration parameters*/
+        webphone_api.parameters['autostart'] = 0;   // start the webphone only when button is clicked
+        webphone_api.onAppStateChange(function (state)
+        {
+            if (state === 'loaded')
+            {
+                webphone_api.setparameter('serveraddress', 'YOURSIPDOMAIN.COM', false); // yoursipdomain.com your VoIP server IP address or domain name
+                webphone_api.setparameter('username', 'USERNAME', false);      // SIP account username
+                webphone_api.setparameter('password', 'PASSWORD',false);      // SIP account password (see the "Parameters encryption" in the documentation)
+                webphone_api.setparameter('callto', 'DESTINATION',false);        // destination number to call
+                webphone_api.setparameter('autoaction', '0', false);    // 0=nothing (default), 1=call, 2=chat, 3=video call
+            }
+        });
+    </script>
+</head>
+<body style="margin: 0; font-family: Segoe UI, Verdana ; font-size: 16px; color:#2e3d47; line-height: 155%;">
+    <div style="font-family: Segoe UI, Verdana ; font-size: 20px; color:#4eaaec; text-align:center">Click to call</div><br><br>
+
+    <span id="demo_text">This is a click to call implementation of the webphone. You can easily modify this after your needs or create your custom click 2 call solution. <br />See the "Click to call" section in the documentation for more details. <br /></span><br />
+
+    <div id="c2k_container_0" title="" style="text-align: center;">
+    <!--rewrite the CALLTO and uncomment the following line to enable support for ancient browsers-->
+    <!--<a href="tel://CALLTO" id="c2k_alternative_url">CALLTO</a>-->
+    </div>
+</body>
+</html>
